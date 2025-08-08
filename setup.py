@@ -25,6 +25,6 @@ setup(
         'napalm',
         'future',
         'ncclient==0.6.15',
-        'pyfg @ git+https://github.com/xXKnightRiderXx/pyfg.git#egg=pyfg',
+        'pyfg @ git+https://gitlab-ce.gwdg.de/gwdg-netz/pyfg.git#egg=pyfg',
     ],
 )
