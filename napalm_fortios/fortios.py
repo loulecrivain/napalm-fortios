@@ -117,7 +117,7 @@ class FortiOSDriver(NetworkDriver):
             try:
                 self.device.load_config(path=block, empty_candidate=True)
             except CommandExecutionException as e:
-                raise MergeConfigException(e.message)
+                raise MergeConfigException(e)
 
     def compare_config(self):
         return self.device.compare_config()
@@ -129,9 +129,9 @@ class FortiOSDriver(NetworkDriver):
             self.discard_config()
         except FailedCommit as e:
             if self.config_replace:
-                raise ReplaceConfigException(e.message)
+                raise ReplaceConfigException(e)
             else:
-                raise MergeConfigException(e.message)
+                raise MergeConfigException(e)
 
     def discard_config(self):
         self.device.candidate_config = FortiConfig('candidate')
