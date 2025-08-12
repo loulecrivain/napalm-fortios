@@ -162,7 +162,8 @@ class FortiOSDriver(NetworkDriver):
         get_candidate = retrieve == "all" or retrieve == "candidate"
 
         if retrieve == "all" or get_running:
-            result = self._execute_command_with_vdom('show')
+            # hack to disable pagination on FortiOS (grep doesn't use any)
+            result = self._execute_command_with_vdom('show | grep ""')
             text_result = '\n'.join(result)
 
             return {
